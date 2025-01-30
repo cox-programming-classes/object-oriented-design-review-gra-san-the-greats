@@ -27,7 +27,6 @@ public class Vector2D
     /// <summary>
     /// Compute the Angle of this vector!
     /// </summary>
-    /// <exception cref="NotImplementedException"
     public AngleMeasure Angle => new(Math.Atan2(Y, X));
     #endregion
     
