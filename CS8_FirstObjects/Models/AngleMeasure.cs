@@ -18,6 +18,7 @@ public readonly record struct AngleMeasure(double Theta = 0, AngularUnit Unit = 
         // The grey text will go away once you implement the two variant code paths.
         return new AngleMeasure(Unit: newUnit, Theta: newUnit switch
         {
+            //Im really confused by this --gracie
             // if the newUnit is Radians...
             AngularUnit.Radians => throw new NotImplementedException("Compute Degrees to Radians"),
             // if the newUnit is Degrees...
@@ -55,7 +56,7 @@ public readonly record struct AngleMeasure(double Theta = 0, AngularUnit Unit = 
         // if the units are not the same, then we have to convert one!
         return a with { Theta = a.Theta + b.ToUnit(a.Unit).Theta };
     }
-    
+
     /// <summary>
     /// subtract b from a...
     /// The resulting angle will be in the same units as `a`
@@ -65,7 +66,14 @@ public readonly record struct AngleMeasure(double Theta = 0, AngularUnit Unit = 
     /// <param name="b">right side of -</param>
     /// <returns>difference</returns>
     public static AngleMeasure operator -(AngleMeasure a, AngleMeasure b)
-        => throw new NotImplementedException("Implement this method!");
+    {
+        if(a.Unit == b.Unit) 
+            return a with { Theta = a.Theta - b.Theta };
+        
+        // if the units are not the same, then we have to convert one!
+        return a with { Theta = a.Theta - b.ToUnit(a.Unit).Theta };
+    }
+       
 }
 
 /// <summary>
