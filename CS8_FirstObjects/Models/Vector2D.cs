@@ -65,9 +65,9 @@ public class Vector2D
     /// <param name="r">Length of this vector</param>
     /// <param name="angle">Angle measured anti-clockwise from the positive x-axis</param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException">TODO: Implement this method by calculating X and Y</exception>
     public static Vector2D FromPolar(double r, AngleMeasure angle)
-        => throw new NotImplementedException("You need to implement this function.");
+        =>  Vector2D.FromRectangular(r*Math.Cos(angle.ToUnit(AngularUnit.Radians).Theta), r*Math.Sin(angle.ToUnit(AngularUnit.Radians).Theta));
+
     
     #endregion
     
