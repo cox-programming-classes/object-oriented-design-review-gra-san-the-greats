@@ -9,25 +9,26 @@ namespace CS8_FirstObjects.Models;
 public class Vector2D
 {
     #region Properties
+
     /// <summary>
     /// X Coordinate of this Vector
     /// </summary>
-    public required double X { get; init; }
-    
+    public double X => Magnitude * Math.Cos(Angle.ToUnit(AngularUnit.Radians).Theta); //{ get; init; }
+
     /// <summary>
     /// Y Coordinate of this Vector
     /// </summary>
-    public required double Y { get; init; }
-    
+    public double Y => Magnitude * Math.Sin(Angle.ToUnit(AngularUnit.Radians).Theta); //{ get; init; }
+
     /// <summary>
     /// Computed Magnitude of this vector.
     /// </summary>
-    public double Magnitude => Math.Sqrt(X * X + Y * Y);
-    
+    public required double Magnitude { get; init; } //=> Math.Sqrt(X * X + Y * Y);
+
     /// <summary>
     /// Compute the Angle of this vector!
     /// </summary>
-    public AngleMeasure Angle => new(Math.Atan2(Y, X));
+    public required AngleMeasure Angle { get; init; } //=> new(Math.Atan2(Y, X));
     #endregion
     
     #region Constructors
@@ -57,8 +58,8 @@ public class Vector2D
     /// <param name="y"></param>
     /// <returns>a new Vector2D object with the given coordinates</returns>
     public static Vector2D FromRectangular(double x, double y) 
-        => new() { X = x, Y = y };
-    
+        => FromPolar(Math.Sqrt(x * x + y * y), new(Math.Atan2(y, x)));
+
     /// <summary>
     /// Create a new Vector using polar coordinates.
     /// </summary>
@@ -66,7 +67,16 @@ public class Vector2D
     /// <param name="angle">Angle measured anti-clockwise from the positive x-axis</param>
     /// <returns></returns>
     public static Vector2D FromPolar(double r, AngleMeasure angle)
-        =>  Vector2D.FromRectangular(r*Math.Cos(angle.ToUnit(AngularUnit.Radians).Theta), r*Math.Sin(angle.ToUnit(AngularUnit.Radians).Theta));
+        => new()
+        {
+            Magnitude = r,
+            Angle = angle
+        };
+            /*
+            Vector2D.FromRectangular(
+            r*Math.Cos(angle.ToUnit(AngularUnit.Radians).Theta), 
+            r*Math.Sin(angle.ToUnit(AngularUnit.Radians).Theta)
+            );*/
 
     
     #endregion
@@ -80,7 +90,8 @@ public class Vector2D
     /// <param name="b">right side of +</param>
     /// <returns>sum</returns>
     public static Vector2D operator +(Vector2D a, Vector2D b) 
-        => new () { X = a.X + b.X, Y = a.Y + b.Y };
+        => FromRectangular(a.X + b.X, a.Y + b.Y);
+            //new () { X = a.X + b.X, Y = a.Y + b.Y };
     
     /// <summary>
     /// Subtract b from a
@@ -89,7 +100,9 @@ public class Vector2D
     /// <param name="b">right side of -</param>
     /// <returns>difference</returns>
     public static Vector2D operator -(Vector2D a, Vector2D b)
-        => new () { X = a.X - b.X, Y = a.Y - b.Y };
+        => FromRectangular(a.X - b.X, a.Y - b.Y);
+    
+    //new () { X = a.X - b.X, Y = a.Y - b.Y };
     
     /// <summary>
     /// Compute the Dot-Product (aka Inner Product) of a and b
