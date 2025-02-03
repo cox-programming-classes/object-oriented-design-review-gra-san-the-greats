@@ -119,7 +119,6 @@ public class Vector2D
     /// Get a Unit Vector in the same direction as this vector.
     /// </summary>
     /// <returns>A vector with Magnitude = 1 in the same direction as this vector.</returns>
-    /// <exception cref="NotImplementedException">TODO: Implement!</exception>
     public Vector2D UnitVector()
         => FromPolar(1, this.Angle);
 
@@ -128,7 +127,6 @@ public class Vector2D
     /// </summary>
     /// <param name="angle"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException">TODO: Implement!</exception>
     public Vector2D Rotate(AngleMeasure angle)
         => FromPolar(this.Magnitude, this.Angle + angle);
 
