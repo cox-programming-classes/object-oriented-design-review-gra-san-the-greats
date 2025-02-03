@@ -99,7 +99,7 @@ public class Vector2D
     /// <returns>Dot Product</returns>
     /// <exception cref="NotImplementedException">TODO:  Implement this!</exception>
     public static double operator *(Vector2D a, Vector2D b)
-        => new() {}
+        =>  a.X*b.X+ a.Y* b.Y;
     
     /// <summary>
     /// Scale the vector a by a given constant factor.
