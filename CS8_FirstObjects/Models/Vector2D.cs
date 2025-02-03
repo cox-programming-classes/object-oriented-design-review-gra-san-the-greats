@@ -109,7 +109,7 @@ public class Vector2D
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
     public static Vector2D operator *(double factor, Vector2D a)
-        => throw new NotImplementedException("You need to implement this function.");
+        => FromRectangular(factor * a.X, factor * a.Y);
     
     #endregion
     
