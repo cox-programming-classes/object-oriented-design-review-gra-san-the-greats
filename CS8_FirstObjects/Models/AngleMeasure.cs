@@ -20,9 +20,9 @@ public readonly record struct AngleMeasure(double Theta = 0, AngularUnit Unit = 
         {
             //Im really confused by this --gracie
             // if the newUnit is Radians...
-            AngularUnit.Radians => throw new NotImplementedException("Compute Degrees to Radians"),
+            AngularUnit.Radians => Theta * (180 / Math.PI),
             // if the newUnit is Degrees...
-            AngularUnit.Degrees => throw new NotImplementedException("Compute Radians to Degrees"),
+            AngularUnit.Degrees => Theta * (Math.PI / 180),
             // otherwise... (someone gave you bad data)
             _ => throw new InvalidOperationException("Unknown AngularUnit")
         });
