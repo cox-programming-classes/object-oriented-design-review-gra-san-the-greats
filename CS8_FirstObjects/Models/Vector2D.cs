@@ -89,7 +89,7 @@ public class Vector2D
     /// <param name="b">right side of -</param>
     /// <returns>difference</returns>
     public static Vector2D operator -(Vector2D a, Vector2D b)
-        => new () { X = a.X - b.X, Y = a.Y - b.Y };
+        => FromRectangular(a.X - b.X,a.Y - b.Y );
     
     /// <summary>
     /// Compute the Dot-Product (aka Inner Product) of a and b
@@ -99,7 +99,7 @@ public class Vector2D
     /// <returns>Dot Product</returns>
     /// <exception cref="NotImplementedException">TODO:  Implement this!</exception>
     public static double operator *(Vector2D a, Vector2D b)
-        => throw new NotImplementedException("You need to implement this function.");
+        => new() {}
     
     /// <summary>
     /// Scale the vector a by a given constant factor.
