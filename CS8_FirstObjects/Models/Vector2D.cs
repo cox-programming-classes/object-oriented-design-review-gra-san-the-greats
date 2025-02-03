@@ -140,7 +140,7 @@ public class Vector2D
     /// <returns></returns>
     /// <exception cref="NotImplementedException">TODO: Research and Implement~</exception>
     public Vector2D ProjectOnto(Vector2D other)
-        => ((this*other)/(other*other))*other;
+        => this*other/(other*other)*other;
     
     #endregion
     
