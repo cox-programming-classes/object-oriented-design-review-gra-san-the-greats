@@ -120,8 +120,9 @@ public class Vector2D
     /// </summary>
     /// <returns>A vector with Magnitude = 1 in the same direction as this vector.</returns>
     /// <exception cref="NotImplementedException">TODO: Implement!</exception>
-    public Vector2D UnitVector() => throw new NotImplementedException("You need to implement this function.");
-    
+    public Vector2D UnitVector()
+        => FromPolar(1, this.Angle);
+
     /// <summary>
     /// Rotate this vector by a given angle!
     /// </summary>
@@ -129,9 +130,7 @@ public class Vector2D
     /// <returns></returns>
     /// <exception cref="NotImplementedException">TODO: Implement!</exception>
     public Vector2D Rotate(AngleMeasure angle)
-    {
-        throw new NotImplementedException();
-    }
+        => FromPolar(this.Magnitude, this.Angle + angle);
 
     /// <summary>
     /// Compute the projection of this vector onto another vector.
@@ -141,9 +140,7 @@ public class Vector2D
     /// <returns></returns>
     /// <exception cref="NotImplementedException">TODO: Research and Implement~</exception>
     public Vector2D ProjectOnto(Vector2D other)
-    {
-        throw new NotImplementedException();
-    }
+        => throw new NotImplementedException(); 
     #endregion
     
     #region ToString Operations
