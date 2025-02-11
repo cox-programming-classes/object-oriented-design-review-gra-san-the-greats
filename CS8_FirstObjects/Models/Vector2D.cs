@@ -38,7 +38,7 @@ public class Vector2D
     /// In this case, it is `private` because I (the developer) am requiring you
     /// to use the two variations of the Factory methods.
     /// </summary>
-    private Vector2D() { }
+    protected Vector2D() { }
 
     #endregion
 
